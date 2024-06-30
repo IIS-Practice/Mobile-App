@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Montserrat Medium 500.ttf",
+      "sha1": "ca42fe10fa893f390472859405c7564095e4260f"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat Regular 400.ttf",
+      "sha1": "ff1eb5d360a42c0c675d8ecfca9a3e5b709d302a"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat SemiBold 600.ttf",
+      "sha1": "4ef29a9163b56df34a3486b98b24be3a3d0cdca6"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifGujarati Medium 500.ttf",
+      "sha1": "633f2f99746be0565e29fcdfa18a240c3535ccf9"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifGujarati Regular 400.ttf",
+      "sha1": "1ed39b1c57af9876164cf1c8e6917ea4be95a467"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifGujarati SemiBold 600.ttf",
+      "sha1": "3a36044223c944781ce44160b71be4ef07824a14"
+    }
+  ]
+}
