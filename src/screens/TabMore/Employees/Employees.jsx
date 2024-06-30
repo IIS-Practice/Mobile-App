@@ -3,7 +3,7 @@ import { ScrollView, SafeAreaView, View, Text } from "react-native";
 import SimpleButton from "@components/shared/SimpleButton";
 import ArrowButton from "@components/shared/ArrowButton";
 import {
-  FORM_SCREEN,
+  EMPLOYMENT_SCREEN,
   DEVELOPERS_SCREEN,
   DESIGNERS_SCREEN,
   ANALYSTS_SCREEN,
@@ -19,7 +19,7 @@ const Employees = ({ navigation }) => (
       </Text>
       <SimpleButton
         title="Присоединяйтесь к нам"
-        onPress={() => navigation.navigate(FORM_SCREEN)}
+        onPress={() => navigation.navigate(EMPLOYMENT_SCREEN)}
       />
       <View style={styles.buttonContainer}>
         <ArrowButton

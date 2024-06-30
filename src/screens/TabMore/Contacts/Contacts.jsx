@@ -1,10 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { ScrollView, SafeAreaView } from "react-native";
+import SharedForm from "@components/shared/SharedForm";
+import { styles } from "./Contacts.styles";
 
-const Contacts = ({ navigation }) => (
-  <View>
-    <Text style={{ color: "black" }}>Contacts Screen</Text>
-  </View>
+const Contacts = () => (
+  <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.content}>
+      <SharedForm lightMode={false} />
+    </SafeAreaView>
+  </ScrollView>
 );
 
 export default Contacts;
