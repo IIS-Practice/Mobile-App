@@ -5,9 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
         <item name="android:scrollbarThumbHorizontal">@color/scrollbar</item>
-    </style>
+        <item name="android:navigationBarColor">@color/navigationbar</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:statusBarColor">@color/statusbar</item>
+        <item name="android:windowLightStatusBar">true</item>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- SplashScreen -->
         <item name="android:windowBackground">@layout/launch_screen</item>
     </style>
 
