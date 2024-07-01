@@ -47,6 +47,8 @@ export const styles = StyleSheet.create({
     color: LIGHT_COLOR,
     fontSize: 30,
     fontFamily: "Montserrat Medium 500",
+    textAlign: "center",
+    height: "93%",
   },
   elementText: {
     fontFamily: "Montserrat Regular 400",
