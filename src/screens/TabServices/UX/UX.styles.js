@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { PRIMARY_COLOR, DARK_COLOR, LIGHT_COLOR } from "@utils/colors";
-import { SECONDARY_COLOR } from "../../../utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,6 +15,7 @@ export const styles = StyleSheet.create({
     color: DARK_COLOR,
     textAlign: 'left',
     paddingRight: '20%',
+    paddingTop: 40,
     paddingBottom: 30,
   },
   designWord: {
@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
   text: {
     fontFamily: 'Montserrat Regular 400',
     fontSize: 18,
+    color: DARK_COLOR,
   },
   exampleContainers: {
     display: 'flex',

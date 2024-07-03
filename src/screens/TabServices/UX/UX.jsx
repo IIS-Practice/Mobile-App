@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import WhiteStarIconSvg from "../../../assets/icons/WhiteStarIcon";
-import BlueStarIconSvg from "../../../assets/icons/BlueStarIcon";
+import WhiteStarIconSvg from "@assets/icons/WhiteStarIcon";
+import BlueStarIconSvg from "@assets/icons/BlueStarIcon";
 import { styles } from "./UX.styles";
 
 const UX = () => {

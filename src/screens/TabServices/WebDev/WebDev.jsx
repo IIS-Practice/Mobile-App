@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, Animated } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BlueStarIconSvg from "../../../assets/icons/BlueStarIcon";
-import CircleIconSvg from "../../../assets/icons/CircleIcon";
-import CircleMinusIconSvg from "../../../assets/icons/CircleMinusIcon";
+import BlueStarIconSvg from "@assets/icons/BlueStarIcon";
+import CircleIconSvg from "@assets/icons/CircleIcon";
+import CircleMinusIconSvg from "@assets/icons/CircleMinusIcon";
 import { styles } from "./WebDev.styles";
 
 const mistakesData = {
@@ -118,6 +118,7 @@ const WebDev = () => {
                 key={key}
                 style={[styles.point, key === currentMistakeKey && styles.active]}
                 onPress={() => handleClick(key)}
+                activeOpacity={1}
               >
                 <Text style={styles.pointNumber}>{String(index + 1).padStart(2, '0')}</Text>
                 <Text style={styles.pointText}>{mistakesData[key].heading}</Text>
@@ -127,7 +128,7 @@ const WebDev = () => {
           <Text style={styles.descriptionHeading}>{currentMistake.heading}</Text>
           <Text style={styles.mistakeDescription}>{currentMistake.description}</Text>
           {currentMistake.list && currentMistake.list.length > 0 && (
-            <View>
+            <View style={styles.wrapperContainer}>
               {currentMistake.list.map((item, index) => (
                 <View key={index} style={styles.nestedPointWrapper}>
                   <BlueStarIconSvg style={styles.star}></BlueStarIconSvg>
@@ -144,7 +145,7 @@ const WebDev = () => {
               <View key={index}>
               <Text style={styles.advElementHeading}>{item.heading}</Text>
               <View style={styles.line}>
-                <TouchableOpacity style={styles.circleWrapper} onPress={() => handleCirclePress(index)}>
+                <TouchableOpacity style={styles.circleWrapper} onPress={() => handleCirclePress(index)} activeOpacity={1}>
                   {visibleCircleIndex === index ? <CircleMinusIconSvg /> : <CircleIconSvg />}
                 </TouchableOpacity>
               </View>

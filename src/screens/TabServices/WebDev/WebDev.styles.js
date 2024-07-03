@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-import { PRIMARY_COLOR, DARK_COLOR, LIGHT_COLOR } from "@utils/colors";
-import { SECONDARY_COLOR } from "../../../utils/colors";
+import { PRIMARY_COLOR, SECONDARY_COLOR, DARK_COLOR, LIGHT_COLOR } from "@utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,6 +15,7 @@ export const styles = StyleSheet.create({
     color: DARK_COLOR,
     textAlign: 'left',
     paddingRight: '20%',
+    paddingTop: 40,
     paddingBottom: 30,
   },
   mistakesPoints: {
@@ -64,6 +64,9 @@ export const styles = StyleSheet.create({
     color: DARK_COLOR,
     paddingRight: '10%',
   },
+  wrapperContainer: {
+    rowGap: 15,
+  },
   nestedPointWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -91,14 +94,14 @@ export const styles = StyleSheet.create({
     backgroundColor: PRIMARY_COLOR,
   },
   advHeading: {
+    width: '100%',
     fontFamily: 'Montserrat SemiBold 600',
     fontSize: 30,
     color: LIGHT_COLOR,
-    paddingRight: '20%',
     marginBottom: 30,
   },
   advElementHeading: {
-    fontFamily: 'NotoSerifGujarati Medium 500',
+    fontFamily: 'Montserrat Medium 500',
     fontSize: 25,
     color: LIGHT_COLOR,
     textTransform: 'uppercase',

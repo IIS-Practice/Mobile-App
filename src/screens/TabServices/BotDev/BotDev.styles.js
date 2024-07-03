@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-import { PRIMARY_COLOR, DARK_COLOR, LIGHT_COLOR } from "@utils/colors";
-import { SECONDARY_COLOR } from "../../../utils/colors";
+import { PRIMARY_COLOR, SECONDARY_COLOR, DARK_COLOR, LIGHT_COLOR } from "@utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,10 +10,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: '5%',
   },
   headerText: {
-    fontFamily: 'NotoSerifGujarati Medium 500',
+    fontFamily: 'Montserrat Medium 500',
     fontSize: 20,
     color: DARK_COLOR,
     textAlign: 'left',
+    paddingTop: 40,
   },
   nestedPointWrapper: {
     flexDirection: 'row',
