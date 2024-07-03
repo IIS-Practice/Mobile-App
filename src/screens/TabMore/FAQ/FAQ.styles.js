@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { LIGHT_COLOR, DARK_COLOR, PRIMARY_COLOR } from "@utils/colors";
+import { LIGHT_COLOR, DARK_COLOR } from "@utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    width: 320,
+    width: "80%",
     marginBottom: 20,
   },
   questionText: {
@@ -34,8 +34,10 @@ export const styles = StyleSheet.create({
   answerText: {
     color: DARK_COLOR,
     fontFamily: "Montserrat Regular 400",
+    width: "90%",
     fontSize: 16,
     marginBottom: 20,
+    flexWrap: "wrap"
   },
   arrowIcon: {
     width: 41,

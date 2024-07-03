@@ -61,6 +61,7 @@ const FAQ = () => {
           {questions.map(faq => (
             <View key={faq.id}>
               <TouchableOpacity
+                activeOpacity={1}
                 style={styles.questionButton}
                 onPress={() =>
                   faq.question === questionToDisplay
