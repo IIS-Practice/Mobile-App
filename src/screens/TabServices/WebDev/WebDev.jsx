@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, Animated } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Animated,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BlueStarIconSvg from "@assets/icons/BlueStarIcon";
 import CircleIconSvg from "@assets/icons/CircleIcon";
@@ -42,43 +48,61 @@ const mistakesData = {
 
 const WebDev = () => {
   const data = [
-    { heading: 'Проектирование интерфейсов', text: 'Делаем страницы удобными и понятными, подавая информацию о ' +
-                                                  'ваших товарах и услугах в максимально эффективном виде. ' +
-                                                  'Простота и удобство взаимодействия пользователя с сайтом – ' +
-                                                  'залог того, что он не закроет вкладку, отчаявшись найти нужную ' +
-                                                  'ему информацию в "простыне" плохо отформатированного текста и ' +
-                                                  'необозначенных элементов навигации.' },
-    { heading: 'Адаптивная вёрстка', text: 'Посетителям вашего сайта не придется "подсовывать" мобильную ' +
-                                          'версию сайта, опасаясь громоздкости полноэкранных страниц. ' +
-                                          'Работа с медиазапросами позволяет одинаково хорошо ' +
-                                          'отображаться всему тексту, изображениям и элементам интерфейса ' +
-                                          'как на компьютере или ноутбуке, так и на планшете или ' +
-                                          'телефоне, независимо от разрешения и диагонали экрана устройства.' },
-    { heading: 'Программирование и интеграция', text: 'Калькуляторы стоимости и фильтры по множественным параметрам ' +
-                                                      'дают посетителям сайта именно то, чего они ожидают – ' +
-                                                      'моментальное решение задач выбора. А интеграция платежных ' +
-                                                      'систем, API сервисов и сайта несут за собой удобство расчетов ' +
-                                                      'и логистическую разгрузку. Программные решения позволяют ' +
-                                                      'делегировать "роботам" множество задач, тем самым разгрузить ' +
-                                                      'ваш персонал, позволяя сконцентрироваться на рабочем процессе.' },
-    { heading: 'Поисковая оптимизация', text: 'Для достижения лидирующих позиций Вашего сайта в органической ' +
-                                              'выдаче таких поисковых систем как Яндекс и Google уже давно ' +
-                                              'недостаточно закупить тонну ссылок и радоваться топовым ' +
-                                              'позициям. Сейчас очень важно качество самого сайта, его ' +
-                                              'правильная оптимизация под требования и условия поисковиков, а ' +
-                                              'так же качество и тематика ссылающихся на него сайтов.' },
+    {
+      heading: "Проектирование интерфейсов",
+      text:
+        "Делаем страницы удобными и понятными, подавая информацию о " +
+        "ваших товарах и услугах в максимально эффективном виде. " +
+        "Простота и удобство взаимодействия пользователя с сайтом – " +
+        "залог того, что он не закроет вкладку, отчаявшись найти нужную " +
+        'ему информацию в "простыне" плохо отформатированного текста и ' +
+        "необозначенных элементов навигации.",
+    },
+    {
+      heading: "Адаптивная вёрстка",
+      text:
+        'Посетителям вашего сайта не придется "подсовывать" мобильную ' +
+        "версию сайта, опасаясь громоздкости полноэкранных страниц. " +
+        "Работа с медиазапросами позволяет одинаково хорошо " +
+        "отображаться всему тексту, изображениям и элементам интерфейса " +
+        "как на компьютере или ноутбуке, так и на планшете или " +
+        "телефоне, независимо от разрешения и диагонали экрана устройства.",
+    },
+    {
+      heading: "Программирование и интеграция",
+      text:
+        "Калькуляторы стоимости и фильтры по множественным параметрам " +
+        "дают посетителям сайта именно то, чего они ожидают – " +
+        "моментальное решение задач выбора. А интеграция платежных " +
+        "систем, API сервисов и сайта несут за собой удобство расчетов " +
+        "и логистическую разгрузку. Программные решения позволяют " +
+        'делегировать "роботам" множество задач, тем самым разгрузить ' +
+        "ваш персонал, позволяя сконцентрироваться на рабочем процессе.",
+    },
+    {
+      heading: "Поисковая оптимизация",
+      text:
+        "Для достижения лидирующих позиций Вашего сайта в органической " +
+        "выдаче таких поисковых систем как Яндекс и Google уже давно " +
+        "недостаточно закупить тонну ссылок и радоваться топовым " +
+        "позициям. Сейчас очень важно качество самого сайта, его " +
+        "правильная оптимизация под требования и условия поисковиков, а " +
+        "так же качество и тематика ссылающихся на него сайтов.",
+    },
   ];
 
   const [activeIndex, setActiveIndex] = useState(null);
   const [animation, setAnimation] = useState(new Animated.Value(0));
-  const [currentMistakeKey, setCurrentMistakeKey] = useState(Object.keys(mistakesData)[0]);
+  const [currentMistakeKey, setCurrentMistakeKey] = useState(
+    Object.keys(mistakesData)[0],
+  );
   const [visibleCircleIndex, setVisibleCircleIndex] = useState(null);
 
-  const handleClick = (key) => {
+  const handleClick = key => {
     setCurrentMistakeKey(key);
   };
 
-  const handleCirclePress = (index) => {
+  const handleCirclePress = index => {
     setVisibleCircleIndex(index === visibleCircleIndex ? null : index);
     if (activeIndex === index) {
       Animated.timing(animation, {
@@ -116,17 +140,27 @@ const WebDev = () => {
             {Object.keys(mistakesData).map((key, index) => (
               <TouchableOpacity
                 key={key}
-                style={[styles.point, key === currentMistakeKey && styles.active]}
+                style={[
+                  styles.point,
+                  key === currentMistakeKey && styles.active,
+                ]}
                 onPress={() => handleClick(key)}
-                activeOpacity={1}
-              >
-                <Text style={styles.pointNumber}>{String(index + 1).padStart(2, '0')}</Text>
-                <Text style={styles.pointText}>{mistakesData[key].heading}</Text>
+                activeOpacity={1}>
+                <Text style={styles.pointNumber}>
+                  {String(index + 1).padStart(2, "0")}
+                </Text>
+                <Text style={styles.pointText}>
+                  {mistakesData[key].heading}
+                </Text>
               </TouchableOpacity>
             ))}
           </View>
-          <Text style={styles.descriptionHeading}>{currentMistake.heading}</Text>
-          <Text style={styles.mistakeDescription}>{currentMistake.description}</Text>
+          <Text style={styles.descriptionHeading}>
+            {currentMistake.heading}
+          </Text>
+          <Text style={styles.mistakeDescription}>
+            {currentMistake.description}
+          </Text>
           {currentMistake.list && currentMistake.list.length > 0 && (
             <View style={styles.wrapperContainer}>
               {currentMistake.list.map((item, index) => (
@@ -143,19 +177,24 @@ const WebDev = () => {
             </Text>
             {data.map((item, index) => (
               <View key={index}>
-              <Text style={styles.advElementHeading}>{item.heading}</Text>
-              <View style={styles.line}>
-                <TouchableOpacity style={styles.circleWrapper} onPress={() => handleCirclePress(index)} activeOpacity={1}>
-                  {visibleCircleIndex === index ? <CircleMinusIconSvg /> : <CircleIconSvg />}
-                </TouchableOpacity>
-              </View>
-              {activeIndex === index && (
-                <Animated.View style={{ height: getHeight() }}>
-                  <Text style={styles.hiddenText}>
-                    {item.text}
-                  </Text>
-                </Animated.View>
-              )}
+                <Text style={styles.advElementHeading}>{item.heading}</Text>
+                <View style={styles.line}>
+                  <TouchableOpacity
+                    style={styles.circleWrapper}
+                    onPress={() => handleCirclePress(index)}
+                    activeOpacity={1}>
+                    {visibleCircleIndex === index ? (
+                      <CircleMinusIconSvg />
+                    ) : (
+                      <CircleIconSvg />
+                    )}
+                  </TouchableOpacity>
+                </View>
+                {activeIndex === index && (
+                  <Animated.View style={{ height: getHeight() }}>
+                    <Text style={styles.hiddenText}>{item.text}</Text>
+                  </Animated.View>
+                )}
               </View>
             ))}
           </View>

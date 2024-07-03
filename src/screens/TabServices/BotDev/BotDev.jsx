@@ -45,9 +45,11 @@ const stagesData = {
 };
 
 const BotDev = () => {
-  const [currentStageKey, setCurrentStageKey] = useState(Object.keys(stagesData)[0]);
+  const [currentStageKey, setCurrentStageKey] = useState(
+    Object.keys(stagesData)[0],
+  );
 
-  const handleClick = (key) => {
+  const handleClick = key => {
     setCurrentStageKey(key);
   };
 
@@ -56,10 +58,8 @@ const BotDev = () => {
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView>
-        <View style={styles.content}> 
-          <Text style={styles.headerText}>
-            Улучшение бизнес-процессов
-          </Text>
+        <View style={styles.content}>
+          <Text style={styles.headerText}>Улучшение бизнес-процессов</Text>
           <View style={styles.points}>
             <View style={styles.nestedPointWrapper}>
               <BlueStarIconSvg style={styles.star}></BlueStarIconSvg>
@@ -67,7 +67,9 @@ const BotDev = () => {
             </View>
             <View style={styles.nestedPointWrapper}>
               <BlueStarIconSvg style={styles.star}></BlueStarIconSvg>
-              <Text style={styles.text}>Автоматизация рутинных и повторяющихся задач</Text>
+              <Text style={styles.text}>
+                Автоматизация рутинных и повторяющихся задач
+              </Text>
             </View>
             <View style={styles.nestedPointWrapper}>
               <BlueStarIconSvg style={styles.star}></BlueStarIconSvg>
@@ -75,25 +77,39 @@ const BotDev = () => {
             </View>
             <View style={styles.nestedPointWrapper}>
               <BlueStarIconSvg style={styles.star}></BlueStarIconSvg>
-              <Text style={styles.text}>Увеличение доверия клиентов к бренду</Text>
+              <Text style={styles.text}>
+                Увеличение доверия клиентов к бренду
+              </Text>
             </View>
           </View>
           <View style={styles.stagesContainer}>
-            <Text style={styles.stagesContainerHeading}>Как мы это делаем?</Text>
+            <Text style={styles.stagesContainerHeading}>
+              Как мы это делаем?
+            </Text>
             <View style={styles.stagesPoints}>
               {Object.keys(stagesData).map((key, index) => (
                 <TouchableOpacity
                   key={key}
-                  style={[styles.point, key === currentStageKey && styles.active]}
-                  onPress={() => handleClick(key)}
-                >
-                  <Text style={styles.pointNumber}>{String(index + 1).padStart(2, '0')}</Text>
-                  <Text style={styles.pointText}>{stagesData[key].heading}</Text>
+                  style={[
+                    styles.point,
+                    key === currentStageKey && styles.active,
+                  ]}
+                  onPress={() => handleClick(key)}>
+                  <Text style={styles.pointNumber}>
+                    {String(index + 1).padStart(2, "0")}
+                  </Text>
+                  <Text style={styles.pointText}>
+                    {stagesData[key].heading}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </View>
-            <Text style={styles.descriptionHeading}>{currentStage.heading}</Text>
-            <Text style={styles.stageDescription}>{currentStage.description}</Text>
+            <Text style={styles.descriptionHeading}>
+              {currentStage.heading}
+            </Text>
+            <Text style={styles.stageDescription}>
+              {currentStage.description}
+            </Text>
             {currentStage.list && currentStage.list.length > 0 && (
               <View>
                 {currentStage.list.map((item, index) => (

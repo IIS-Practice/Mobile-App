@@ -1,5 +1,11 @@
 import { StyleSheet } from "react-native";
-import { PRIMARY_COLOR, SECONDARY_COLOR, DARK_COLOR, LIGHT_COLOR } from "@utils/colors";
+import {
+  PRIMARY_COLOR,
+  SECONDARY_COLOR,
+  DARK_COLOR,
+  LIGHT_COLOR,
+  QUATERNARY_COLOR,
+} from "@utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,24 +13,24 @@ export const styles = StyleSheet.create({
     backgroundColor: LIGHT_COLOR,
   },
   content: {
-    paddingHorizontal: '5%',
+    paddingHorizontal: "5%",
   },
   headerText: {
-    fontFamily: 'Montserrat Medium 500',
+    fontFamily: "Montserrat Medium 500",
     fontSize: 25,
     color: DARK_COLOR,
-    textAlign: 'left',
+    textAlign: "left",
     paddingTop: 40,
-    paddingRight: '15%',
+    paddingRight: "15%",
   },
   nestedPointWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     columnGap: 15,
-    paddingRight: '20%',
+    paddingRight: "20%",
   },
   text: {
-    fontFamily: 'Montserrat Regular 400',
+    fontFamily: "Montserrat Regular 400",
     fontSize: 18,
     color: DARK_COLOR,
   },
@@ -34,13 +40,13 @@ export const styles = StyleSheet.create({
   },
   stagesContainer: {
     marginTop: 40,
-    marginHorizontal: '-5%',
+    marginHorizontal: "-5%",
     paddingVertical: 30,
-    paddingHorizontal: '5%',
+    paddingHorizontal: "5%",
     backgroundColor: PRIMARY_COLOR,
   },
   stagesContainerHeading: {
-    fontFamily: 'Montserrat SemiBold 600',
+    fontFamily: "Montserrat SemiBold 600",
     fontSize: 30,
     color: LIGHT_COLOR,
     marginBottom: 25,
@@ -50,25 +56,25 @@ export const styles = StyleSheet.create({
     rowGap: 15,
   },
   point: {
-    cursor: 'pointer',
+    cursor: "pointer",
     minHeight: 64,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9694cf',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: QUATERNARY_COLOR,
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
     columnGap: 12,
   },
   pointNumber: {
-    fontFamily: 'Montserrat SemiBold 600',
+    fontFamily: "Montserrat SemiBold 600",
     color: LIGHT_COLOR,
     fontSize: 25,
   },
   pointText: {
     flex: 1,
-    fontFamily: 'Montserrat Regular 400',
+    fontFamily: "Montserrat Regular 400",
     color: LIGHT_COLOR,
     fontSize: 18,
   },
@@ -79,13 +85,13 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   descriptionHeading: {
-    fontFamily: 'Montserrat SemiBold 600',
+    fontFamily: "Montserrat SemiBold 600",
     fontSize: 25,
     marginBottom: 20,
     color: LIGHT_COLOR,
   },
   stageDescription: {
-    fontFamily: 'Montserrat Regular 400',
+    fontFamily: "Montserrat Regular 400",
     fontSize: 20,
     color: LIGHT_COLOR,
   },
@@ -93,10 +99,10 @@ export const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   priceHeading: {
-    fontFamily: 'Montserrat SemiBold 600',
+    fontFamily: "Montserrat SemiBold 600",
     fontSize: 30,
     color: PRIMARY_COLOR,
-    textAlign: 'center',
+    textAlign: "center",
     paddingTop: 30,
   },
   points: {
@@ -104,8 +110,8 @@ export const styles = StyleSheet.create({
     rowGap: 15,
   },
   pricePoint: {
-    fontFamily: 'Montserrat Regular 400',
+    fontFamily: "Montserrat Regular 400",
     fontSize: 20,
     color: PRIMARY_COLOR,
-  }
+  },
 });

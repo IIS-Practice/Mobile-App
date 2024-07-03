@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BlueStarIconSvg from "@assets/icons/BlueStarIcon";
-import { styles } from "./MobileDev.styles"
+import { styles } from "./MobileDev.styles";
 
 const stagesData = {
   stage1: {
@@ -50,9 +50,11 @@ const stagesData = {
 };
 
 const MobileDev = () => {
-  const [currentStageKey, setCurrentStageKey] = useState(Object.keys(stagesData)[0]);
+  const [currentStageKey, setCurrentStageKey] = useState(
+    Object.keys(stagesData)[0],
+  );
 
-  const handleClick = (key) => {
+  const handleClick = key => {
     setCurrentStageKey(key);
   };
 
@@ -61,26 +63,38 @@ const MobileDev = () => {
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView>
-        <View style={styles.content}> 
+        <View style={styles.content}>
           <Text style={styles.headerText}>
             iOS и Android приложения, отвечающие всем требованиям
           </Text>
           <View style={styles.stagesContainer}>
-            <Text style={styles.stagesContainerHeading}>Этапы разработки приложения</Text>
+            <Text style={styles.stagesContainerHeading}>
+              Этапы разработки приложения
+            </Text>
             <View style={styles.stagesPoints}>
               {Object.keys(stagesData).map((key, index) => (
                 <TouchableOpacity
                   key={key}
-                  style={[styles.point, key === currentStageKey && styles.active]}
-                  onPress={() => handleClick(key)}
-                >
-                  <Text style={styles.pointNumber}>{String(index + 1).padStart(2, '0')}</Text>
-                  <Text style={styles.pointText}>{stagesData[key].heading}</Text>
+                  style={[
+                    styles.point,
+                    key === currentStageKey && styles.active,
+                  ]}
+                  onPress={() => handleClick(key)}>
+                  <Text style={styles.pointNumber}>
+                    {String(index + 1).padStart(2, "0")}
+                  </Text>
+                  <Text style={styles.pointText}>
+                    {stagesData[key].heading}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </View>
-            <Text style={styles.descriptionHeading}>{currentStage.heading}</Text>
-            <Text style={styles.stageDescription}>{currentStage.description}</Text>
+            <Text style={styles.descriptionHeading}>
+              {currentStage.heading}
+            </Text>
+            <Text style={styles.stageDescription}>
+              {currentStage.description}
+            </Text>
             {currentStage.list && currentStage.list.length > 0 && (
               <View>
                 {currentStage.list.map((item, index) => (
