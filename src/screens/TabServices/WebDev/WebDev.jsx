@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, Animated } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BlueStarIconSvg from "../../../svg/BlueStarIcon";
-import CircleIconSvg from "../../../svg/CircleIcon";
+import BlueStarIconSvg from "../../../assets/icons/BlueStarIcon";
+import CircleIconSvg from "../../../assets/icons/CircleIcon";
+import CircleMinusIconSvg from "../../../assets/icons/CircleMinusIcon";
 import { styles } from "./WebDev.styles";
 
 const mistakesData = {
@@ -71,12 +72,14 @@ const WebDev = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [animation, setAnimation] = useState(new Animated.Value(0));
   const [currentMistakeKey, setCurrentMistakeKey] = useState(Object.keys(mistakesData)[0]);
+  const [visibleCircleIndex, setVisibleCircleIndex] = useState(null);
 
   const handleClick = (key) => {
     setCurrentMistakeKey(key);
   };
 
   const handleCirclePress = (index) => {
+    setVisibleCircleIndex(index === visibleCircleIndex ? null : index);
     if (activeIndex === index) {
       Animated.timing(animation, {
         toValue: 0,
@@ -142,7 +145,7 @@ const WebDev = () => {
               <Text style={styles.advElementHeading}>{item.heading}</Text>
               <View style={styles.line}>
                 <TouchableOpacity style={styles.circleWrapper} onPress={() => handleCirclePress(index)}>
-                  <CircleIconSvg />
+                  {visibleCircleIndex === index ? <CircleMinusIconSvg /> : <CircleIconSvg />}
                 </TouchableOpacity>
               </View>
               {activeIndex === index && (

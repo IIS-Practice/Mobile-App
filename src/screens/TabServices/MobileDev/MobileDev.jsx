@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BlueStarIconSvg from "../../../svg/BlueStarIcon";
+import BlueStarIconSvg from "../../../assets/icons/BlueStarIcon";
 import { styles } from "./MobileDev.styles"
 
 const stagesData = {
