@@ -15,12 +15,12 @@ const HomeMainBlock = ({ navigation }) => {
           
           <TouchableOpacity
             style={styles.submitApplication}
-            onPress={() => navigation.navigate(FORM_SCREEN)}
-          >
-            <Text>
+            onPress={() => navigation.navigate(FORM_SCREEN)}>
+            <Text style={styles.submitApplicationText}>
               Оставить заявку
             </Text>
           </TouchableOpacity>
+          
         </View>
       </View>
       <View style={styles.companyImage}>

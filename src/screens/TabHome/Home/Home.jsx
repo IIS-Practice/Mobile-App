@@ -4,35 +4,15 @@ import { FORM_SCREEN, WATERFALL_SCREEN, SCRUM_SCREEN } from "@utils/constants";
 import { styles } from "./Home.styles";
 import SimpleButton from "@components/shared/SimpleButton";
 import HomeMainBlock from "../MainBlock/MainBlock";
-import HomeProjects from "../Projects/MainBlock/ProjectsBlock";
+import HomeProjects from "../Projects/ProjectsBlock";
+import HomeTasks from "../Tasks/TasksBlock";
 
 const Home = ({ navigation }) => (
-  // <ScrollView style={styles.container}>
-  //   <SafeAreaView style={styles.content}>
-      
-  //     <View style={styles.buttonContainer}>
-      
-  //       <SimpleButton
-  //         title="Форма"
-  //         onPress={() => navigation.navigate(FORM_SCREEN)}
-  //       />
-  //       <SimpleButton
-  //         title="Waterfall"
-  //         onPress={() => navigation.navigate(WATERFALL_SCREEN)}
-  //       />
-  //       <SimpleButton
-  //         title="Scrum"
-  //         onPress={() => navigation.navigate(SCRUM_SCREEN)}
-  //       />
-  //     </View>
-
-  //   </SafeAreaView>
-  // </ScrollView>
   <ScrollView style={styles.container}>
     <HomeMainBlock navigation={navigation}/>
     <HomeProjects/>
-  </ScrollView>
-  
+    <HomeTasks/>
+    </ScrollView>
 ); 
 
 export default Home;

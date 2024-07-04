@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import LeftButton from "@assets/icons/LeftButton";
 import RightButton from "@assets/icons/RightButton";
 import { styles } from "./ProjectsBlock.styles";
+import { WEBDEV_SCREEN, BOTDEV_SCREEN, MOBILEDEV_SCREEN, UX_SCREEN } from "@utils/constants";
 
 const HomeProjects = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -14,22 +15,22 @@ const HomeProjects = () => {
     {
       name: "Разработка сайтов",
       description: "Создаём уникальные сайты, которые повышают конверсию продаж...",
-      route: `${SERVICES_ROUTE}/webDev`,
+      route: WEBDEV_SCREEN,
     },
     {
       name: "Разработка ботов",
       description: "Разрабатываем интеллектуальных ботов, которые автоматизируют задачи...",
-      route: `${SERVICES_ROUTE}/botDev`,
+      route: BOTDEV_SCREEN,
     },
     {
       name: "Разработка мобильных приложений",
       description: "Создаём интуитивно понятные и функциональные мобильные приложения...",
-      route: `${SERVICES_ROUTE}/mobileDev`,
+      route: MOBILEDEV_SCREEN,
     },
     {
       name: "UX/UI Дизайн",
       description: "Разрабатываем привлекательные и удобные интерфейсы, которые улучшают пользовательский опыт...",
-      route: `${SERVICES_ROUTE}/ux`,
+      route: UX_SCREEN ,
     },
   ];
 
