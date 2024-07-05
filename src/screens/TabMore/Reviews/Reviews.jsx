@@ -7,24 +7,6 @@ import LeftButtonIconSvg from "@assets/icons/LeftButtonIcon";
 import RightButtonIconSvg from "@assets/icons/RightButtonIcon";
 import { styles } from "./Reviews.styles";
 
-// const reviews = {
-//   review1: {
-//     image: <AvatarIconSvg />,
-//     name: "Евгений Кузнецов",
-//     text: "Отличная компания. Достаточно быстро разработали приложение в соответствии с моими желаниями."
-//   },
-//   review2: {
-//     image: <AvatarIconSvg />,
-//     name: "Илья Даниленко",
-//     text: "Отличная компания. Достаточно быстро разработали приложение в соответствии с моими желаниями."
-//   },
-//   review3: {
-//     image: <AvatarIconSvg />,
-//     name: "Владислав Сачивко",
-//     text: "Отличная компания. Достаточно быстро разработали приложение в соответствии с моими желаниями."
-//   },
-// };
-
 const Reviews = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [reviews, setReviews] = useState([]);
