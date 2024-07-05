@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
     marginBottom: 26,
     borderRadius: 2,
     alignItems: "center",
-    justifyContent: "center", // Центрирование содержимого по вертикали
+    justifyContent: "center", 
   },
 
   submitApplicationText: {
