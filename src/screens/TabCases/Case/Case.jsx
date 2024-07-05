@@ -1,153 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   ScrollView,
   Image,
   Dimensions,
+  PixelRatio,
 } from "react-native";
 import { styles } from "./Case.styles";
 import { WebView } from "react-native-webview";
 import BlueStar from "@assets/icons/blue_star.svg";
 import WhiteStar from "@assets/icons/white_star.svg";
+import { CASES_SCREEN } from "@utils/constants";
+import { getCase } from "@api/services/caseApi";
 
 const Case = ({ navigation, route }) => {
   const caseId = route.params;
+  const [_case, setCase] = useState(null);
+  const [htmlBlock, setHtmlBlock] = useState(""); 
 
   if (!caseId) {
     return <Text>Error: caseId is missing.</Text>;
   }
-
-  const _case = {
-    id: caseId,
-    name: "PITA STREET FOOD",
-    shortDescription:
-      "Разработка сайта для корректного отображения на всех устройствах!",
-    innerHtml: `
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@100..900&display=swap");
-    .case-description {
-        margin-top: 40px;
-    }
-
-    .case-description h2 {
-        font-weight: 600;
-	      font-size: 2.187em;
-        margin-bottom: 20px;
-        line-height: 1.2em;
-    }
-
-    .case-description p {
-	      font-weight: 400;
-	      font-size: 1.875em;
-        margin-bottom: 25px;
-        line-height: 1.2em;
-    }
-
-    .project-details-image img {
-        height: 37.3em;
-        width: 27.7em;
-        object-fit: cover;
-        margin-right: 3%;
-    }
-
-    .info .mobile-image {
-        display: none;
-    }
-
-    .project-details-image {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .info {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-    }
-
-    .info p {
-        font-weight: 400;
-        text-align: left;
-	      font-size: 1.125em;
-        line-height: 1.371em;
-    }
-
-    .info .mobile-image {
-        display: block;
-            width: 100%;
-            height: auto;
-            margin: 30px 0;
-    }
-
-    .project-details-image .desktop-image {
-            display: none;
-    }
-
-    @media (max-width: 768px) {
-        .info .mobile-image {
-            display: none;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getCase(caseId);
+  
+        if (!data) {
+          navigation.navigate(CASES_SCREEN);
+        } else {
+          setCase({
+            ...data,
+            images: data.images.map(image => image.replace("https://localhost:7001", "http://10.0.2.2:5186"))
+        });
+          setHtmlBlock(`
+              <div style="font-size: 40px; line-height: normal; font-family: "Montserrat", sans-serif;">
+                  ${data.innerHtml}
+              </div>
+              `);
         }
+      } catch (error) {
+        console.error("Failed to fetch case data:", error);
+        navigation.navigate(CASES_SCREEN);
+      }
+    };
+  
+    fetchData();
+  }, [navigation]);
 
-        .case-description {
-            margin-top: 100px;
-        }
 
-        .case-description h2 {
-            	font-size: 1.75em;
-        	line-height: 2.133em;
-        	margin-bottom: 60px;
-        }
-
-        .case-description p {
-		      font-size: 1.5em;
-        	line-height: 1.828em;
-        	margin-bottom: 15px;
-        }
-
-        .info p {
-            font-size: 1.5em;
-            line-height: 1.828em;
-        }
-    }
-</style>
-<div class="case-description">
-    <h2>PITA STREET FOOD</h2>
-    <p>Специализируется на <br /> кулинарии</p>
-</div>
-<div class="project-details-image">
-    <div class="project-details-image">
-        <img src="https://avatars.mds.yandex.net/i?id=48a4918289cb9ad4a778c06b628dfd8765dc83a0-12146588-images-thumbs&n=13"
-            alt="Project Details" class="desktop-image" />
-        <div class="info">
-            <p>Компания “PITA STREET FOOD” обратилась к нам за разработкой полноценного сайта их заведения. В ходе
-                живого общения с нашими специалистами, заказчик четко определился со структурой сайта, также в ТЗ была
-                включена реализация платёжной системы сайта.</p>
-            <img src="https://avatars.mds.yandex.net/i?id=48a4918289cb9ad4a778c06b628dfd8765dc83a0-12146588-images-thumbs&n=13"
-                alt="Project Details" class="mobile-image" />
-            <p>На ранних этапах сотрудничества, мы составили поэтапную смету, промежуточные сроки реализации, в рамках
-                которых вели дальнейшую разработку проекта.</p>
-        </div>
-    </div>
-</div>`,
-    startDate: "2024-05-28T12:39:27.3643085",
-    endDate: "2024-06-28T12:39:27.3643086",
-    cost: 500,
-    complexity: 2,
-    services: [{ id: 1, name: "разработка сайта" }],
-    images: [
-      "http://10.0.2.2:5186/Images/Cases/36f010ed-8c38-4eeb-b9ec-5fb56ccf3189/21nidwfy.png",
-      "http://10.0.2.2:5186/Images/Cases/36f010ed-8c38-4eeb-b9ec-5fb56ccf3189/a0nhh1d3.jpg",
-    ],
-  };
-
-  const htmlBlock = `
-  <div style="font-size: 40px; line-height: normal; font-family: "Montserrat", sans-serif;">
-      ${_case.innerHtml}
-  </div>
-  `;
   const width = Dimensions.get("window").width * 0.9;
+  const [contentHeight, setContentHeight] = useState("");
+
   const getWeeksBetweenDates = (start, end) => {
     if (!start || !end) return 0;
 
@@ -193,8 +98,13 @@ const Case = ({ navigation, route }) => {
     return serviceName in services ? services[serviceName] : serviceName;
   };
 
+  onWebViewMessage = (event) => {
+    setContentHeight(Number(event.nativeEvent.data)/PixelRatio.get())
+  }
+
   return (
     <ScrollView style={styles.container}>
+      {_case ? (
       <View style={styles.content}>
         <Text style={styles.headerText}>
           Кейс{" "}
@@ -207,8 +117,12 @@ const Case = ({ navigation, route }) => {
         <Image source={{ uri: _case.images[0] }} style={styles.image} />
 
         <WebView
-          style={{ height: 960, width: width, flex: 1, marginTop: 20 }}
+          style={{ height: contentHeight, width: width, flex: 0, marginTop: 20,  }}
           source={{ html: htmlBlock }}
+          automaticallyAdjustContentInsets={false}
+          scrollEnabled={false}
+          onMessage={this.onWebViewMessage}
+          injectedJavaScript='window.ReactNativeWebView.postMessage(document.documentElement.clientHeight)'
         />
 
         <View style={styles.detailContainer}>
@@ -235,7 +149,7 @@ const Case = ({ navigation, route }) => {
             <Text style={styles.boldDetailText}>{_case.cost}$</Text>
           </Text>
         </View>
-      </View>
+      </View>) : <Text>Wait...</Text>}
     </ScrollView>
   );
 };

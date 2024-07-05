@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 import { CASE_SCREEN } from "@utils/constants";
+import { getCases } from "@api/services/caseApi";
 
 import { styles } from "./Cases.styles";
 
@@ -21,7 +22,7 @@ const Cases = ({ navigation }) => {
     navigation.navigate(CASE_SCREEN, id);
   };
 
-  const cases = [
+  const _cases = [
     {
       id: "1",
       name: "PITA STREET FOOD",
@@ -68,6 +69,26 @@ const Cases = ({ navigation }) => {
       ],
     },
   ];
+  const [cases, setCases] = useState([]);
+
+  useEffect(() => {
+    const fetchCases = async () => {
+      try {
+        const data = await getCases();
+        setCases(data.map(item => {
+          return {
+              ...item,
+              images: item.images.map(image => image.replace("https://localhost:7001", "http://10.0.2.2:5186"))
+          };
+      }));
+      } catch (error) {
+        console.error("Failed to fetch cases:", error);
+      }
+    };
+
+    fetchCases();
+    console.log(cases);
+  }, []);
 
   const [visibleCount, setVisibleCount] = useState(3);
 
