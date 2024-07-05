@@ -1,7 +1,13 @@
 import React from "react";
-import { View, Text, ScrollView, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Dimensions,
+} from "react-native";
 import { styles } from "./Case.styles";
-import RenderHTML from "react-native-render-html";
+import { WebView } from "react-native-webview";
 import BlueStar from "@assets/icons/blue_star.svg";
 import WhiteStar from "@assets/icons/white_star.svg";
 
@@ -19,27 +25,29 @@ const Case = ({ navigation, route }) => {
       "Разработка сайта для корректного отображения на всех устройствах!",
     innerHtml: `
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@100..900&display=swap");
     .case-description {
-        margin-top: 100px;
+        margin-top: 40px;
     }
 
     .case-description h2 {
-        font-size: 1.75rem;
         font-weight: 600;
-        line-height: 2.133rem;
-        margin-bottom: 60px;
+	      font-size: 2.187em;
+        margin-bottom: 20px;
+        line-height: 1.2em;
     }
 
     .case-description p {
-        font-size: 1.5rem;
-        font-weight: 400;
-        line-height: 1.828rem;
-        margin-bottom: 15px;
+	      font-weight: 400;
+	      font-size: 1.875em;
+        margin-bottom: 25px;
+        line-height: 1.2em;
     }
 
     .project-details-image img {
-        height: 37.3rem;
-        width: 27.7rem;
+        height: 37.3em;
+        width: 27.7em;
         object-fit: cover;
         margin-right: 3%;
     }
@@ -60,47 +68,47 @@ const Case = ({ navigation, route }) => {
     }
 
     .info p {
-        font-size: 1.5rem;
         font-weight: 400;
-        line-height: 1.828rem;
         text-align: left;
+	      font-size: 1.125em;
+        line-height: 1.371em;
     }
 
     .info .mobile-image {
-        display: none;
+        display: block;
+            width: 100%;
+            height: auto;
+            margin: 30px 0;
+    }
+
+    .project-details-image .desktop-image {
+            display: none;
     }
 
     @media (max-width: 768px) {
         .info .mobile-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: 30px 0;
-        }
-
-        .project-details-image .desktop-image {
             display: none;
         }
 
         .case-description {
-            margin-top: 40px;
+            margin-top: 100px;
         }
 
         .case-description h2 {
-            font-size: 2.187rem;
-            margin-bottom: 20px;
-            line-height: 2.667rem;
+            	font-size: 1.75em;
+        	line-height: 2.133em;
+        	margin-bottom: 60px;
         }
 
         .case-description p {
-            font-size: 1.875rem;
-            margin-bottom: 25px;
-            line-height: 2.286rem;
+		      font-size: 1.5em;
+        	line-height: 1.828em;
+        	margin-bottom: 15px;
         }
 
         .info p {
-            font-size: 1.125rem;
-            line-height: 1.371rem;
+            font-size: 1.5em;
+            line-height: 1.828em;
         }
     }
 </style>
@@ -133,7 +141,13 @@ const Case = ({ navigation, route }) => {
       "http://10.0.2.2:5186/Images/Cases/36f010ed-8c38-4eeb-b9ec-5fb56ccf3189/a0nhh1d3.jpg",
     ],
   };
-  const { width } = Dimensions.get("window");
+
+  const htmlBlock = `
+  <div style="font-size: 40px; line-height: normal; font-family: "Montserrat", sans-serif;">
+      ${_case.innerHtml}
+  </div>
+  `;
+  const width = Dimensions.get("window").width * 0.9;
   const getWeeksBetweenDates = (start, end) => {
     if (!start || !end) return 0;
 
@@ -166,17 +180,36 @@ const Case = ({ navigation, route }) => {
     }
   };
 
+  const getEndOfService = serviceName => {
+    serviceName = serviceName.toLowerCase();
+
+    const services = {
+      "разработка сайта": "разработке сайтов",
+      "разработка мобильного приложения": "разработке мобильного приложения",
+      "разработка ботов": "разработке ботов",
+      "ux/ui Дизайн": "UX/UI дизайну",
+    };
+
+    return serviceName in services ? services[serviceName] : serviceName;
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.headerText}>
-          Кейс {_case.services.map(service => `по ${service.name}`).join(", ")}{" "}
+          Кейс{" "}
+          {_case.services
+            .map(service => `по ${getEndOfService(service.name)}`)
+            .join(", ")}{" "}
           для "{_case.name}"
         </Text>
 
         <Image source={{ uri: _case.images[0] }} style={styles.image} />
 
-        <RenderHTML contentWidth={width} source={{ html: _case.innerHtml }} />
+        <WebView
+          style={{ height: 960, width: width, flex: 1, marginTop: 20 }}
+          source={{ html: htmlBlock }}
+        />
 
         <View style={styles.detailContainer}>
           <Text style={styles.detailHeader}>Разработка сайта</Text>
@@ -190,9 +223,9 @@ const Case = ({ navigation, route }) => {
           <View style={styles.starContainer}>
             {[...Array(5)].map((_, i) =>
               i >= _case.complexity ? (
-                <WhiteStar id={"0" + i} style={styles.starImage} />
+                <WhiteStar key={i} style={styles.starImage} />
               ) : (
-                <BlueStar id={"0" + i} style={styles.starImage} />
+                <BlueStar key={i} style={styles.starImage} />
               ),
             )}
           </View>
