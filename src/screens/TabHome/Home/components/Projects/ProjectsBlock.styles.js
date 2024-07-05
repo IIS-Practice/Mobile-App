@@ -1,9 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { LIGHT_COLOR, PRIMARY_COLOR, DARK_COLOR, SECONDARY_COLOR } from '@utils/colors';
+import { StyleSheet } from "react-native";
+import {
+  LIGHT_COLOR,
+  PRIMARY_COLOR,
+  DARK_COLOR,
+  SECONDARY_COLOR,
+} from "@utils/colors";
 
 export const styles = StyleSheet.create({
   homeProjects: {
-    width: '100%',
+    width: "100%",
     backgroundColor: LIGHT_COLOR,
   },
 
@@ -13,14 +18,14 @@ export const styles = StyleSheet.create({
   },
 
   heading: {
-    fontFamily: 'Montserrat SemiBold 600',
+    fontFamily: "Montserrat SemiBold 600",
     color: DARK_COLOR,
     fontSize: 30,
     marginBottom: 20,
   },
 
   projectText: {
-    fontFamily: 'Montserrat Medium 500',
+    fontFamily: "Montserrat Medium 500",
     fontSize: 18,
     color: DARK_COLOR,
     lineHeight: 24.38,
@@ -28,21 +33,24 @@ export const styles = StyleSheet.create({
   },
 
   smallProjectsWrapper: {
-    alignItems: 'center',
-    width: '100%',
+    alignItems: "center",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
   },
 
   navButton: {
-    position: 'absolute',
-    top: '50%',
+    top: "50%",
     transform: [{ translateY: -50 }],
   },
-  
+
   navButtonLeft: {
+    position: "absolute",
     left: -10,
   },
 
   navButtonRight: {
+    position: "absolute",
     right: -10,
   },
 
@@ -50,17 +58,18 @@ export const styles = StyleSheet.create({
     backgroundColor: PRIMARY_COLOR,
     padding: 20,
     height: 160,
-    width: 268,
-    display: 'none',
+    width: "80%",
+    display: "none",
+    justifyContent: "center",
   },
 
   activeProject: {
-    display: 'block',
+    display: "flex",
     padding: 15,
   },
-  
+
   projectContent: {
-    height: '100%',
+    height: "100%",
   },
 
   projectDescription: {
@@ -69,30 +78,30 @@ export const styles = StyleSheet.create({
   },
 
   contentName: {
-    fontFamily: 'Montserrat Medium 500',
+    fontFamily: "Montserrat Medium 500",
     fontSize: 17,
     color: LIGHT_COLOR,
     marginBottom: 10,
   },
 
   contentDescription: {
-    fontFamily: 'Montserrat Regular 400',
+    fontFamily: "Montserrat Regular 400",
     fontSize: 13,
     color: LIGHT_COLOR,
   },
 
   contentButton: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginTop: 15,
-    position: 'absolute', 
-    bottom: 0, 
+    position: "absolute",
+    bottom: 0,
     left: 0,
   },
 
   textButton: {
     color: LIGHT_COLOR,
   },
-  
+
   contentButtonHover: {
     color: SECONDARY_COLOR,
   },

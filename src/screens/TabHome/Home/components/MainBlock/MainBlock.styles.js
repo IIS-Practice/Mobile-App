@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { LIGHT_COLOR, PRIMARY_COLOR, DARK_COLOR } from "@utils/colors"; 
+import { LIGHT_COLOR, PRIMARY_COLOR, DARK_COLOR } from "@utils/colors";
 
 export const styles = StyleSheet.create({
   mainBlock: {
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 
   heading2: {
     fontFamily: "Montserrat Medium 500",
-    fontSize: 30,    
+    fontSize: 30,
     color: LIGHT_COLOR,
   },
 
@@ -37,13 +37,13 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  
+
   image: {
     width: "100%",
     height: "100%",
     transform: [{ scaleX: -1 }],
   },
-  
+
   submitApplication: {
     backgroundColor: LIGHT_COLOR,
     width: 200,
@@ -51,13 +51,12 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 26,
     borderRadius: 2,
-    fontSize: 14,
-    paddingVertical: 11,
     alignItems: "center",
+    justifyContent: "center", // Центрирование содержимого по вертикали
   },
 
   submitApplicationText: {
-    fontFamily: 'Montserrat Regular 400',
+    fontFamily: "Montserrat Regular 400",
     fontSize: 14,
     color: DARK_COLOR,
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { SCRUM_SCREEN, WATERFALL_SCREEN } from "@utils/constants";
 import StarIcon from "@assets/icons/StarIcon";
 import { styles } from "./TasksBlock.styles";
@@ -10,7 +10,9 @@ const HomeTasks = () => {
 
   return (
     <View style={styles.homeTasks}>
-      <Text style={styles.title}>Работаем по подходящей для Вас методологии</Text>
+      <Text style={styles.title}>
+        Работаем по подходящей для Вас методологии
+      </Text>
       <View>
         <View style={styles.task}>
           <Text style={styles.taskTitle}>WATERFALL</Text>
@@ -28,7 +30,9 @@ const HomeTasks = () => {
               <Text style={styles.taskItemText}>фиксированная цена</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate(WATERFALL_SCREEN)} style={styles.buttonAbout}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(WATERFALL_SCREEN)}
+            style={styles.buttonAbout}>
             <Text style={styles.buttonAboutText}>Подробнее</Text>
           </TouchableOpacity>
         </View>
@@ -41,14 +45,18 @@ const HomeTasks = () => {
             </View>
             <View style={styles.taskItem}>
               <StarIcon />
-              <Text style={styles.taskItemText}>оплата по факту затраченных часов</Text>
+              <Text style={styles.taskItemText}>
+                оплата по факту затраченных часов
+              </Text>
             </View>
             <View style={styles.taskItem}>
               <StarIcon />
               <Text style={styles.taskItemText}>гибкая цена +/-</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate(SCRUM_SCREEN)} style={styles.buttonAbout}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(SCRUM_SCREEN)}
+            style={styles.buttonAbout}>
             <Text style={styles.buttonAboutText}>Подробнее</Text>
           </TouchableOpacity>
         </View>
