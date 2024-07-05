@@ -7,12 +7,18 @@ import {
   ImageBackground,
 } from "react-native";
 
+import { CASE_SCREEN } from "@utils/constants";
+
 import { styles } from "./Cases.styles";
 
 const Cases = ({ navigation }) => {
   const moreClick = () => {
     if (visibleCount + 3 > cases.length) setVisibleCount(cases.length);
     else setVisibleCount(visibleCount + 3);
+  };
+
+  const casePress = id => {
+    navigation.navigate(CASE_SCREEN, id);
   };
 
   const cases = [
@@ -71,8 +77,9 @@ const Cases = ({ navigation }) => {
         {cases.slice(0, visibleCount).map(_case => (
           <TouchableOpacity
             style={styles.caseBlock}
+            onPress={() => casePress(_case.id)}
             key={_case.id}
-            activeOpacity={1}>
+            activeOpacity={0.8}>
             <ImageBackground
               source={{ uri: _case.images[0] }}
               resizeMode="cover"
