@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 
 import BlueArrowIcon from "@assets/icons/blueArrow.svg";
 import { styles } from "./FAQ.styles";
 
+import { getFaqs } from "@api/services/faqApi";
+
 const FAQ = () => {
-  let questions = [
+  let _questions = [
     {
       id: "1",
       question: "Какие услуги вы предоставляете?",
@@ -50,8 +52,21 @@ const FAQ = () => {
         "Чтобы начать сотрудничество, вы можете связаться с нами через форму обратной связи на сайте или по телефону. Мы обсудим ваши потребности и предложим оптимальное решение для вашего проекта. После этого мы подготовим коммерческое предложение и заключим договор.",
     },
   ];
-
+  const [questions, setQuestions] = useState([]);
   const [questionToDisplay, setQuestionToDisplay] = useState("");
+
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const data = await getFaqs();
+        setQuestions(data);
+      } catch (error) {
+        console.error("Failed to fetch faqs:", error);
+      }
+    };
+
+    fetchFaqs();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>

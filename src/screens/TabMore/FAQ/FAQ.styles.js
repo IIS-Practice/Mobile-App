@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   answerText: {
     color: DARK_COLOR,
     fontFamily: "Montserrat Regular 400",
-    width: "90%",
+    width: "100%",
     fontSize: 16,
     marginBottom: 20,
     flexWrap: "wrap"
