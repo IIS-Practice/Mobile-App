@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ScrollView, SafeAreaView, View, Text } from "react-native";
 import SimpleButton from "@components/shared/SimpleButton";
 import ArrowButton from "@components/shared/ArrowButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getSpecialists } from "@api/services/specialistApi";
 import {
   EMPLOYMENT_SCREEN,
   DEVELOPERS_SCREEN,
@@ -10,7 +12,25 @@ import {
 } from "@utils/constants";
 import { styles } from "./Employees.styles";
 
-const Employees = ({ navigation }) => (
+const Employees = ({ navigation }) => {
+
+  useEffect(() => {
+    const fetchAndStoreSpecialists = async () => {
+      try {
+        const cachedData = await AsyncStorage.getItem('specialists');
+        if (!cachedData) {
+          const data = await getSpecialists();
+          await AsyncStorage.setItem('specialists', JSON.stringify(data));
+        } 
+      } catch (error) {
+        console.error("Failed to fetch specialists:", error);
+      }
+    };
+    fetchAndStoreSpecialists();
+  }, []);
+
+
+  return (
   <ScrollView style={styles.container}>
     <SafeAreaView style={styles.content}>
       <Text style={styles.text}>
@@ -38,5 +58,6 @@ const Employees = ({ navigation }) => (
     </SafeAreaView>
   </ScrollView>
 );
+};
 
 export default Employees;
